@@ -1,32 +1,37 @@
 const colors = [
-//    "beige", 
 "Cornflowerblue",
   "Crimson",
-  "Fuchsia",
+  "MediumSlateBlue",
+  "Deeppink",
+  "Darkorange",
    "Cadetblue",
-   "Chartreuse",
    "Chocolate",
-   "DarkGoldenRod",
-   "Gold",
+   "YellowGreen",
+   "Salmon",
+   "DarkKhaki",
+  "Mediumturquoise",
+  "Lightblue",
+  "Gold",
+  "Fuchsia",
+  "Teal",
+  "SaddleBrown",
+  "	Darkolivegreen",
+  "DarkGoldenRod",
   "Dimgrey",
   "DarkMagenta",
-  "Darkorange",
-  "MediumSlateBlue",
-  "Teal",
-  "YellowGreen",
-  "SaddleBrown",
-  "DarkKhaki",
   "Navy",
-  "Deeppink",
-
 ];
 
 
-// Creating the Structure and giving functionality to it
+// Creating the Structure and giving functionality to it by ctrl key (Only if we press ctrl while clicking the box, color will change , otherwise it will remain same )
 
-function handleClick (colorText){
+function handleClick (colorText, e){
+if(e.ctrlKey){
   heading.style.backgroundColor = colorText
   heading.innerText = colorText
+} else{
+  heading.innerText = "Use ctrl key to change the color"
+}
 }
 
 
@@ -36,8 +41,9 @@ function createBox (){
     colors.forEach(color => {
         let box = document.createElement('div')
         box.classList.add('box')  
-        box.addEventListener("click",function (){
-          handleClick(color)
+        box.addEventListener("click",function (event){
+          console.log(event);
+          handleClick(color, event)
         })
         box.style.backgroundColor = color
         boxes.append(box)
@@ -45,7 +51,6 @@ function createBox (){
 }
 
 createBox()
-
 
 
 
